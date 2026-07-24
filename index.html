@@ -7,44 +7,112 @@
 <style>
 body{
 margin:0;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#ff69b4,#6a5acd);
+font-family:'Comic Sans MS', Arial, sans-serif;
+background:linear-gradient(135deg,#ff69b4,#6a5acd,#dda0dd);
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
 color:white;
 text-align:center;
+overflow:hidden;
 }
 .card{
-background:rgba(255,255,255,.15);
-padding:30px;
+background:rgba(255,255,255,.2);
+padding:40px;
 border-radius:20px;
 max-width:500px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 30px rgba(255,255,255,.3);
+animation:brilhar 2s infinite alternate;
+z-index:2;
 }
+h1{ font-size:2.8em; margin:10px 0; text-shadow:2px 2px 8px rgba(0,0,0,0.3); }
+h2{ font-size:2.2em; margin:5px 0; color:yellow; }
+h3{ font-size:1.6em; margin:5px 0; }
+p{ font-size:1.3em; }
 button{
-padding:12px 20px;
-font-size:18px;
+padding:16px 28px;
+font-size:20px;
 border:none;
-border-radius:10px;
+border-radius:15px;
 cursor:pointer;
+background:yellow;
+color:#6a5acd;
+font-weight:bold;
+margin-top:20px;
+transition:0.3s;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
 }
+button:hover{ transform:scale(1.1); }
+.balao{
+position:absolute;
+bottom:-100px;
+width:40px;
+height:60px;
+border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+animation:subir 10s infinite;
+opacity:0.8;
+z-index:1;
+}
+@keyframes subir{ to{ transform:translateY(-120vh); } }
+@keyframes brilhar{ from{box-shadow:0 0 20px #fff;} to{box-shadow:0 0 40px #ff69b4;} }
+@keyframes cair{ to{ transform:translateY(100vh) rotate(720deg); opacity:0; } }
 </style>
 </head>
 <body>
 
+<!-- BALÕES SUBINDO -->
+<script>
+for(let i=0; i<20; i++){
+let balao = document.createElement('div');
+balao.classList.add('balao');
+balao.style.left = Math.random()*100 + 'vw';
+balao.style.background = `hsl(${Math.random()*360}, 100%, 70%)`;
+balao.style.animationDelay = Math.random()*5 + 's';
+balao.style.width = 30 + Math.random()*20 + 'px';
+balao.style.height = 50 + Math.random()*20 + 'px';
+document.body.appendChild(balao);
+}
+</script>
+
 <div class="card">
 <h1>🎉 Feliz Aniversário! 🎂</h1>
 <h2>Maria Antônia</h2>
-<h3>7 anos</h3>
+<h3>7 aninhos 💖</h3>
 
 <p>Que seu dia seja cheio de alegria, brincadeiras, aventuras e muitos presentes!</p>
 
-<button onclick="alert('Parabéns, Maria Antônia! Que você tenha um aniversário maravilhoso! 🎁')">
+<button onclick="surpresa()">
 🎁 Abrir Surpresa
 </button>
 
 </div>
+
+<!-- CONFETE + ALERTA -->
+<script>
+function surpresa(){
+alert('Parabéns, Maria Antônia! Que você tenha um aniversário maravilhoso e cheio de magia! 🎁✨');
+for(let i=0; i<150; i++){
+  let confete = document.createElement('div');
+  confete.style.position='fixed';
+  confete.style.left=Math.random()*100+'vw';
+  confete.style.top='-10px';
+  confete.style.width='10px';
+  confete.style.height='10px';
+  confete.style.background=`hsl(${Math.random()*360},100%,50%)`;
+  confete.style.animation='cair 3s linear';
+  confete.style.animationDelay = Math.random()*0.5 + 's';
+  document.body.appendChild(confete);
+  setTimeout(()=>confete.remove(),3500);
+}
+}
+</script>
+
+<!-- MÚSICA DE FUNDO -->
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
 </body>
 </html>
