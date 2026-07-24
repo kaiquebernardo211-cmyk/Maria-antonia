@@ -55,14 +55,13 @@ animation:subir 10s infinite;
 opacity:0.8;
 z-index:1;
 }
-@keyframes subir{ to{ transform:translateY(-120vh); } }
+@keyframes subir{ to{ transform:translateY(-120vh); }
 @keyframes brilhar{ from{box-shadow:0 0 20px #fff;} to{box-shadow:0 0 40px #ff69b4;} }
 @keyframes cair{ to{ transform:translateY(100vh) rotate(720deg); opacity:0; } }
 </style>
 </head>
 <body>
 
-<!-- BALÕES SUBINDO -->
 <script>
 for(let i=0; i<20; i++){
 let balao = document.createElement('div');
@@ -80,16 +79,10 @@ document.body.appendChild(balao);
 <h1>🎉 Feliz Aniversário! 🎂</h1>
 <h2>Maria Antônia</h2>
 <h3>7 aninhos 💖</h3>
-
 <p>Que seu dia seja cheio de alegria, brincadeiras, aventuras e muitos presentes!</p>
-
-<button onclick="surpresa()">
-🎁 Abrir Surpresa
-</button>
-
+<button onclick="surpresa()">🎁 Abrir Surpresa</button>
 </div>
 
-<!-- CONFETE + ALERTA -->
 <script>
 function surpresa(){
 alert('Parabéns, Maria Antônia! Que você tenha um aniversário maravilhoso e cheio de magia! 🎁✨');
@@ -106,10 +99,8 @@ for(let i=0; i<150; i++){
   document.body.appendChild(confete);
   setTimeout(()=>confete.remove(),3500);
 }
-}
 </script>
 
-<!-- MÚSICA DE FUNDO -->
 <audio autoplay loop>
 <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
